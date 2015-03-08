@@ -1,0 +1,1 @@
+ziekenhuis = require('../app.js');

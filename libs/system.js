@@ -5,7 +5,7 @@
 /****************************************************/
 
 var colors = require('colors'),
-    config = require('config.js'),
+    config = require('./config.js'),
     moment = require('moment');
     
 colors.setTheme({
@@ -40,10 +40,12 @@ process.on('uncaughtException', function onUncaughtException(err) {
  *   Well, it is not for noting process.on('exit')....
  */
 process.on('exit', function onExit(code) {
-    if(code === 0) {
-        console.log('Exiting NOW with the code: ' + code);
-    } else {
-        console.log(colors.error('Exiting NOW with the code: ' + code));
+    if(config.debug) {
+        if(code === 0) {
+            console.log('Exiting NOW with the code: ' + code);
+        } else {
+            console.log(colors.error('Exiting NOW with the code: ' + code));
+        }
     }
 });
 
