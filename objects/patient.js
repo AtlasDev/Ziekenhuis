@@ -22,7 +22,6 @@ function patient(name, gender, disease) {
     this.name = name.charAt(0).toUpperCase() + name.slice(1);
     this.gender = gender.toLowerCase().charAt(0).toUpperCase() + gender.slice(1);
     this.disease = disease.toLowerCase().charAt(0).toUpperCase() + disease.slice(1);
-    
     system.log("New patient created", 1);
 }
 

@@ -74,13 +74,16 @@ chamber.prototype.addPatient = function addPatient(name, disease, gender) {
  *   The bed it's id, if full; return false
  */
 chamber.prototype.findOpenBed = function findOpenBed() {
-    console.log(this.beds);
-    this.beds.forEach(function(bed) {
-        if(bed.occupied == false) {
-            return true;
-        }
+    var emptyBed;
+    this.beds.some(function (bed, index) {
+        emptyBed = bed.bed;
+        return bed.occupied === false;
     });
-    return false;
+    if(emptyBed) {
+        return emptyBed;
+    } else {
+        return false;
+    }
 }
 
 chamber.prototype.getBed = function getBed(bedNumber) {
