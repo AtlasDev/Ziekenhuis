@@ -36,7 +36,6 @@ hospital.prototype.addChamber = function addChamber(id, patientChamber, quaranti
     
     var newChamber = new chamberObj(id, patientChamber, quarantine);
     
-    system.log(message);
     return newChamber.getId;
 }
 

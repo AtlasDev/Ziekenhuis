@@ -36,7 +36,8 @@ function chamber(id, patientChamber, quarantine, quarantineDisease) {
  *   The id
  */
 chamber.prototype.getID = function getID() {
-    return this.id;
+    console.log(id);
+    return id;
 }
 
 /**
@@ -46,7 +47,7 @@ chamber.prototype.getID = function getID() {
  *   If the chamber is a patient chamber
  */
 chamber.prototype.isPatientChamber = function isPatientChamber() {
-    return this.PatientChamber;
+    return PatientChamber;
 }
 
 /**
@@ -56,7 +57,7 @@ chamber.prototype.isPatientChamber = function isPatientChamber() {
  *   If the chamber is a quarantine chamber
  */
 chamber.prototype.isQuarantine = function isQuarantine() {
-    return this.quarantine;
+    return quarantine;
 }
 
 /**
@@ -66,7 +67,7 @@ chamber.prototype.isQuarantine = function isQuarantine() {
  *   Get the chamber disease, if not a quarantine, returns null
  */
 chamber.prototype.getDisease = function getDisease() {
-    return this.quarantineDisease;
+    return quarantineDisease;
 }
 
 /**
