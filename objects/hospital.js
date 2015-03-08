@@ -12,7 +12,8 @@ var chamberObj = require('./chamber.js');
  *
  */
 function hospital() {
-    this.chambers = "{}";
+    this.chambers = [];
+    system.log("New hospital created", 1);
 }
 
 /**
@@ -27,16 +28,31 @@ function hospital() {
  * @param Boolean quarantine
  *   If the new chamber is a quarantine, only if patientChamber is true too
  *
- * @return String id
- *   The chamber id
+ * @return Object chamber
+ *   The chamber
  */
 hospital.prototype.addChamber = function addChamber(id, patientChamber, quarantine) {
     patientChamber = typeof patientChamber !== 'undefined' ? patientChamber : true; 
     quarantine = typeof quarantine !== 'undefined' ? quarantine : false;
     
     var newChamber = new chamberObj(id, patientChamber, quarantine);
+    this.chambers.push(newChamber);
     
-    return newChamber.getId;
+    return newChamber;
+}
+
+/**
+ * Gets all chambers
+ *
+ * @return Array chambers
+ *   All chambers in array, witch are objects
+ */
+hospital.prototype.getChambers = function getChambers() {
+    return this.chambers;
+}
+
+hospital.prototype.addPatient = function addPatient() {
+    
 }
 
 /**

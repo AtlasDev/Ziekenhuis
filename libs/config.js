@@ -4,8 +4,8 @@
 // Description: The config file, where the hard coded variables are set
 /****************************************************/
 
-var config                      = {};
+var config     = {};
 
-config.debug                    = true;
+config.debug   = true;
 
 module.exports = config;

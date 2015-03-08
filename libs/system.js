@@ -42,9 +42,9 @@ process.on('uncaughtException', function onUncaughtException(err) {
 process.on('exit', function onExit(code) {
     if(config.debug) {
         if(code === 0) {
-            console.log('Exiting NOW with the code: ' + code);
+            log('Exiting NOW with the code: ' + code);
         } else {
-            console.log(colors.error('Exiting NOW with the code: ' + code));
+            log('Exiting NOW with the code: ' + code, 3);
         }
     }
 });
