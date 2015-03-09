@@ -31,13 +31,11 @@ function hospital() {
  * @return Object chamber
  *   The chamber
  */
-hospital.prototype.addChamber = function addChamber(id, patientChamber, quarantine) {
-    patientChamber = typeof patientChamber !== 'undefined' ? patientChamber : true; 
-    quarantine = typeof quarantine !== 'undefined' ? quarantine : false;
-    
-    var newChamber = new chamberObj(id, patientChamber, quarantine);
+hospital.prototype.addChamber = function addChamber(id, type, patientChamber, quarantine) {
+	if (typeof patientChamber == "undefined") patientChamber = true;
+	if (typeof quarantine == "undefined") quarantine = false;
+    var newChamber = new chamberObj(id, type, patientChamber, quarantine);
     this.chambers.push(newChamber);
-    
     return newChamber;
 }
 
@@ -51,8 +49,23 @@ hospital.prototype.getChambers = function getChambers() {
     return this.chambers;
 }
 
-hospital.prototype.addPatient = function addPatient() {
-    
+/**
+ * Add a new patient
+ *
+ * @param String name
+ *   The patient's name, like 'John Doe'
+ *
+ * @param String gender
+ *   The patient's gender, either 'Man' or 'Woman'
+ *
+ * @param String disease
+ *   The patient's disease, like 'Cholera'
+ */
+hospital.prototype.addPatient = function addPatient(name, gender, disease) {
+    this.chambers.some(function (chamber, index) {
+        console.log(chamber);
+        return false;
+    });
 }
 
 /**

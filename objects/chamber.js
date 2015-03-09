@@ -27,13 +27,15 @@ var patientObj = require('./patient.js');
  */
 function chamber(id, type, patientChamber, quarantine, quarantineDisease) {
     this.id = id;
-    this.patientChamber = typeof patientChamber !== 'undefined' ? patientChamber : true;
-    this.quarantine = typeof quarantine !== 'undefined' ? quarantine : false;
-    this.quarantineDisease = typeof quarantineDisease !== 'undefined' ? quarantineDisease : null;
+	if (typeof patientChamber == "undefined") patientChamber = true;
+	if (typeof quarantine == "undefined") quarantine = false;
+	if (typeof quarantineDisease == "undefined") quarantineDisease = null;
+	this.patientChamber = patientChamber;
+	this.quarantine = quarantine;
+	this.quarantineDisease = quarantineDisease;
     this.type = type;
     this.maxPatients = Math.floor((Math.random() * 6) + 1);
     this.beds = [];
-    
     for(var i = 0; i < this.maxPatients; i++) {
         var emptyBed = {
             patient: null,
@@ -58,20 +60,22 @@ function chamber(id, type, patientChamber, quarantine, quarantineDisease) {
  *   The patient's disease, like 'Cholera'
  */
 chamber.prototype.addPatient = function addPatient(name, disease, gender) {
-    if(this.isQuarantine) {
+    if(this.isQuarantine == true) {
         if(this.getDisease != disease) {
             return false;
         }
     }
+	var bed = this.findOpenBed() - 1;
     var newPatient = new patientObj(name, gender, disease);
-    this.beds.push(newPatient);
+	this.beds[bed].occupied = true;
+	this.beds[bed].patient = newPatient;
 }
 
 /**
  * Find a open bed
  *
  * @return int bed
- *   The bed it's id, if full; return false
+ *   The bed it's id, if everything full; return false
  */
 chamber.prototype.findOpenBed = function findOpenBed() {
     var emptyBed;
